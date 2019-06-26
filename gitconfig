@@ -9,6 +9,10 @@
   current = green
   remote = yellow
 
+[credential]
+    helper = !aws --profile springconfig-backoffice codecommit credential-helper $@
+    UseHttpPath = true
+
 [core]
   pager = less -FRSX
 	editor = '/Applications/Sublime Text.app/Contents/SharedSupport/bin/subl' -n -w
@@ -47,5 +51,11 @@
 [branch "master"]
   mergeoptions = --no-edit
 [user]
-	email = clembo590@gmail.com
+	email = clement.boret@tidal.com
 	name = clement.boret
+[difftool "sourcetree"]
+	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+	path = 
+[mergetool "sourcetree"]
+	cmd = /Applications/Sourcetree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+	trustExitCode = true

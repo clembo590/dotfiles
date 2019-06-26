@@ -33,3 +33,36 @@ export BUNDLER_EDITOR="'/Applications/Sublime Text.app/Contents/SharedSupport/bi
 export BUNDLER_EDITOR="'/Applications/Sublime Text.app/Contents/SharedSupport/bin/subl' -a"
 export BUNDLER_EDITOR="'/Applications/Sublime Text.app/Contents/SharedSupport/bin/subl' -a"
 export BUNDLER_EDITOR="'/Applications/Sublime Text.app/Contents/SharedSupport/bin/subl' -a"
+
+# docker kill containers that are running;
+alias dockerKillAll='docker kill $(docker ps -q)'
+
+# docker delete containers that are not running
+alias dockerRmAll='docker rm $(docker ps -a -q)'
+
+# docker kill and delete containers
+alias dockerClean='dockerKillAll;dockerRmAll;'
+
+alias dockerRmAllImages='docker rmi -f $(docker images -a -q)'
+
+stagessh() {
+   ssh -i ~/.ssh/stage.pem ubuntu@$@
+}
+
+prodssh() {
+   ssh -i ~/.ssh/tidal-us-east-1-2.pem ubuntu@$@
+}
+
+dockerLog() {
+   docker logs -f $@
+}
+
+alias mvnci='mvn -T 4 clean install'
+alias mvncint='mvnci -Dmaven.test.skip=true'
+alias tidal='cd; cd code/tidal'
+alias gitAbortMerge='git merge --abort'
+alias gitShowAssumeUnchanged="git ls-files -v | grep '^[a-z]' | cut -c3-"
+
+alias mvnSetVersion='mvn org.codehaus.mojo:versions-maven-plugin:2.7:set -DprocessAllModules=true -DgenerateBackupPoms=false'
+alias mvnUpdateVersions='mvn org.codehaus.mojo:versions-maven-plugin:2.7:update-properties -Dincludes=com.tidal\*:\*,com.wimp\*:\* -DallowSnapshots=true -DgenerateBackupPoms=false;mvn org.codehaus.mojo:versions-maven-plugin:2.7:use-latest-versions -Dincludes=com.tidal\*:\*,com.wimp\*:\* -DallowSnapshots=true -DgenerateBackupPoms=false'
+alias mvnList="mvn fr.jcgay.maven.plugins:buildplan-maven-plugin:list"
