@@ -30,9 +30,7 @@ export PATH="./bin:./node_modules/.bin:${PATH}:/usr/local/sbin"
 export LANG=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
 export BUNDLER_EDITOR="'/Applications/Sublime Text.app/Contents/SharedSupport/bin/subl' -a"
-export BUNDLER_EDITOR="'/Applications/Sublime Text.app/Contents/SharedSupport/bin/subl' -a"
-export BUNDLER_EDITOR="'/Applications/Sublime Text.app/Contents/SharedSupport/bin/subl' -a"
-export BUNDLER_EDITOR="'/Applications/Sublime Text.app/Contents/SharedSupport/bin/subl' -a"
+
 
 # docker kill containers that are running;
 alias dockerKillAll='docker kill $(docker ps -q)'
@@ -58,7 +56,7 @@ dockerLog() {
 }
 
 alias mvnci='mvn -T 4 clean install'
-alias mvncint='mvnci -Dmaven.test.skip=true'
+alias mvncint='mvnci -Dmaven.test.skip=true -DUT.skip=true -DIT.skip=true'
 alias tidal='cd; cd code/tidal'
 alias gitAbortMerge='git merge --abort'
 alias gitShowAssumeUnchanged="git ls-files -v | grep '^[a-z]' | cut -c3-"
@@ -71,3 +69,28 @@ alias mvnList="mvn fr.jcgay.maven.plugins:buildplan-maven-plugin:list"
 alias changeUsrLocal='sudo chown -R $(whoami):admin /usr/local'
 alias switchToPython2='unlink /usr/local/bin/python; ln -s /usr/local/Cellar/python@2/2.7.15_1/bin/python /usr/local/bin/python;'
 alias switchToPython3='unlink /usr/local/bin/python; ln -s /usr/local/Cellar/python/3.6.4_3/bin/python /usr/local/bin/python;'
+
+alias awsLogin=“saml2aws login --session-duration=43200”
+alias awsStage=“aws --profile stage ”
+alias awsProd=“aws --profile prod ”
+alias awsSshStage=“aws --profile stage ssm start-session --target ”
+alias awsSshProd=“aws --profile prod ssm start-session --target ”
+
+source ~/.javasetup
+source ~/.npmsetup
+
+
+
+
+
+
+
+
+
+
+
+
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
