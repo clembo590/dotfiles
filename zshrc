@@ -61,8 +61,10 @@ alias tidal='cd; cd code/tidal'
 alias gitAbortMerge='git merge --abort'
 alias gitShowAssumeUnchanged="git ls-files -v | grep '^[a-z]' | cut -c3-"
 alias gitdUntrackAllUnTrackedFiles="git ls-files -v | grep '^[a-z]' | cut -c 3- | tr '\012' '\000' | xargs -0 git update-index --no-assume-unchanged"
+alias gitRefreshPrune="git remote prune origin"
 
 alias mvnSetVersion='mvn org.codehaus.mojo:versions-maven-plugin:2.7:set -DprocessAllModules=true -DgenerateBackupPoms=false'
+alias mvnSetVersionNotAll='mvn org.codehaus.mojo:versions-maven-plugin:2.7:set -DgenerateBackupPoms=false'
 alias mvnUpdateVersions='mvn org.codehaus.mojo:versions-maven-plugin:2.7:update-properties -Dincludes=com.tidal\*:\*,com.wimp\*:\* -DallowSnapshots=true -DgenerateBackupPoms=false;mvn org.codehaus.mojo:versions-maven-plugin:2.7:use-latest-versions -Dincludes=com.tidal\*:\*,com.wimp\*:\* -DallowSnapshots=true -DgenerateBackupPoms=false'
 alias mvnList="mvn fr.jcgay.maven.plugins:buildplan-maven-plugin:list"
 
@@ -70,11 +72,94 @@ alias changeUsrLocal='sudo chown -R $(whoami):admin /usr/local'
 alias switchToPython2='unlink /usr/local/bin/python; ln -s /usr/local/Cellar/python@2/2.7.15_1/bin/python /usr/local/bin/python;'
 alias switchToPython3='unlink /usr/local/bin/python; ln -s /usr/local/Cellar/python/3.6.4_3/bin/python /usr/local/bin/python;'
 
-alias awsLogin=“saml2aws login --session-duration=43200”
-alias awsStage=“aws --profile stage ”
-alias awsProd=“aws --profile prod ”
-alias awsSshStage=“aws --profile stage ssm start-session --target ”
-alias awsSshProd=“aws --profile prod ssm start-session --target ”
+alias awsTidalLogin="saml2aws login --session-duration=43200"
+alias awsTidalStage="aws --profile stage "
+alias awsTidalProd="aws --profile prod "
+alias awsTidalSshStage="aws --profile stage ssm start-session --target "
+alias awsTidalSshProd="aws --profile prod ssm start-session --target "
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 source ~/.javasetup
 source ~/.npmsetup
