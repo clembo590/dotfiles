@@ -78,6 +78,8 @@ alias awsTidalProd="aws --profile prod "
 alias awsTidalSshStage="aws --profile stage ssm start-session --target "
 alias awsTidalSshProd="aws --profile prod ssm start-session --target "
 
+alias awsAssumeRole="~/.aws/assume-role"
+
 
 
 
