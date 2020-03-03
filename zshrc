@@ -40,6 +40,7 @@ alias dockerRmAll='docker rm $(docker ps -a -q)'
 
 # docker kill and delete containers
 alias dockerClean='dockerKillAll;dockerRmAll;'
+alias dclsl='dockerClean; ./local_docker.sh start'
 
 alias dockerRmAllImages='docker rmi -f $(docker images -a -q)'
 
@@ -68,7 +69,7 @@ alias mvnSetVersionNotAll='mvn org.codehaus.mojo:versions-maven-plugin:2.7:set -
 alias mvnUpdateVersions='mvn org.codehaus.mojo:versions-maven-plugin:2.7:update-properties -Dincludes=com.tidal\*:\*,com.wimp\*:\* -DallowSnapshots=true -DgenerateBackupPoms=false;mvn org.codehaus.mojo:versions-maven-plugin:2.7:use-latest-versions -Dincludes=com.tidal\*:\*,com.wimp\*:\* -DallowSnapshots=true -DgenerateBackupPoms=false'
 alias mvnList="mvn fr.jcgay.maven.plugins:buildplan-maven-plugin:list"
 
-alias changeUsrLocal='sudo chown -R $(whoami):admin /usr/local'
+# alias changeUsrLocal='sudo chown -R $(whoami):admin /usr/local'
 alias switchToPython2='unlink /usr/local/bin/python; ln -s /usr/local/Cellar/python@2/2.7.15_1/bin/python /usr/local/bin/python;'
 alias switchToPython3='unlink /usr/local/bin/python; ln -s /usr/local/Cellar/python/3.6.4_3/bin/python /usr/local/bin/python;'
 
