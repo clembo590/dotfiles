@@ -165,7 +165,7 @@ alias awsAssumeRole="~/.aws/assume-role"
 
 
 
-
+source ~/.pythonsetup
 source ~/.javasetup
 source ~/.npmsetup
 
