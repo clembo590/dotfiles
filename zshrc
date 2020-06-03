@@ -76,6 +76,7 @@ alias switchToPython2='unlink /usr/local/bin/python; ln -s /usr/local/Cellar/pyt
 alias switchToPython3='unlink /usr/local/bin/python; ln -s /usr/local/Cellar/python/3.6.4_3/bin/python /usr/local/bin/python;'
 
 alias awsTidalLogin="saml2aws login --session-duration=43200"
+alias awsTidalLogin2="aws-google-auth -u clement.boret@tidal.com -S 1042655796932 -I C00itggk3 -R us-east-1 -d 43200 -p default"
 alias awsTidalStage="aws --profile stage "
 alias awsTidalProd="aws --profile prod "
 alias awsTidalSshStage="aws --profile stage ssm start-session --target "
