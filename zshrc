@@ -31,30 +31,10 @@ export LANG=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
 export BUNDLER_EDITOR="'/Applications/Sublime Text.app/Contents/SharedSupport/bin/subl' -a"
 
+export PATH="/usr/local/opt/awscli@1/bin:$PATH"
 
-# docker kill containers that are running;
-alias dockerKillAll='docker kill $(docker ps -q)'
 
-# docker delete containers that are not running
-alias dockerRmAll='docker rm $(docker ps -a -q)'
 
-# docker kill and delete containers
-alias dockerClean='dockerKillAll;dockerRmAll;'
-alias dclsl='dockerClean; ./local_docker.sh start'
-
-alias dockerRmAllImages='docker rmi -f $(docker images -a -q)'
-
-stagessh() {
-   ssh -i ~/.ssh/stage.pem ubuntu@$@
-}
-
-prodssh() {
-   ssh -i ~/.ssh/tidal-us-east-1-2.pem ubuntu@$@
-}
-
-dockerLog() {
-   docker logs -f $@
-}
 
 alias mvnci='mvn -T 4 clean install'
 alias mvncint='mvnci -Dmaven.test.skip=true -DUT.skip=true -DIT.skip=true'
@@ -84,7 +64,7 @@ alias awsTidalSshProd="aws --profile prod ssm start-session --target "
 
 alias awsAssumeRole="~/.aws/assume-role"
 
-
+alias makebuildrepo ="make build REPO_NAME=bac/${PWD##*/}"
 
 
 
@@ -169,6 +149,7 @@ alias awsAssumeRole="~/.aws/assume-role"
 source ~/.pythonsetup
 source ~/.javasetup
 source ~/.npmsetup
+source ~/.dockersetup
 
 
 
