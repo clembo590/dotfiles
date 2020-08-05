@@ -64,7 +64,11 @@ alias awsTidalSshProd="aws --profile prod ssm start-session --target "
 
 alias awsAssumeRole="~/.aws/assume-role"
 
-alias makebuildrepo="make build REPO_NAME=bac/${PWD##*/}"
+function makebuildrepo() {
+    REPO_NAME=bac/${PWD##*/};
+    echo 'building with repoName='$REPO_NAME;
+    make build REPO_NAME=$REPO_NAME;
+}
 
 
 
