@@ -5,8 +5,8 @@ alias dockerKillAll='docker kill $(docker ps -q)'
 alias dockerRmAll='docker rm $(docker ps -a -q)'
 
 # docker kill and delete containers
-alias dockerClean='dockerKillAll;dockerRmAll;'
-alias dclsl='dockerClean; ./local_docker.sh start'
+alias dc='dockerKillAll;dockerRmAll;'
+alias dcsl='dc; ./local_docker.sh start'
 
 alias dockerRmAllImages='docker rmi -f $(docker images -a -q)'
 
