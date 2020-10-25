@@ -52,7 +52,11 @@
   mergeoptions = --no-edit
 [user]
 	email = clement.boret@tidal.com
-	name = clement.boret
+	name = clement-boret
+
+[includeIf "gitdir:~/code/tidal/github/"]
+    path = ~/code/tidal/github/tidal.gitconfig
+    
 [difftool "sourcetree"]
 	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
 	path = 
