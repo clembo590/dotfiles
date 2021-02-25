@@ -10,16 +10,4 @@ alias dcsl='dc; ./local_docker.sh start;'
 
 alias dockerRmAllImages='docker rmi -f $(docker images -a -q)'
 
-stagessh() {
-   ssh -i ~/.ssh/stage.pem ubuntu@$@
-}
-
-prodssh() {
-   ssh -i ~/.ssh/tidal-us-east-1-2.pem ubuntu@$@
-}
-
-dockerLog() {
-   docker logs -f $@
-}
-
 alias dockerDisk='docker run --rm -it -v /:/docker alpine:edge $@'

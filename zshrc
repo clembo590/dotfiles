@@ -5,7 +5,7 @@ ZSH=$HOME/.oh-my-zsh
 ZSH_THEME="robbyrussell"
 
 # Useful plugins for Rails development with Sublime Text
-plugins=(gitfast last-working-dir common-aliases sublime zsh-syntax-highlighting history-substring-search)
+plugins=(gitfast last-working-dir common-aliases sublime zsh-syntax-highlighting history-substring-search zsh-autosuggestions)
 
 # Prevent Homebrew from reporting - https://github.com/Homebrew/brew/blob/master/share/doc/homebrew/Analytics.md
 export HOMEBREW_NO_ANALYTICS=1
@@ -36,20 +36,14 @@ export PATH="$PATH:/Applications/Visual Studio Code.app/Contents/Resources/app/b
 
 
 
-alias mvnci='mvn -T 4 clean install'
-alias mvncint='mvnci -Dmaven.test.skip=true -DUT.skip=true -DIT.skip=true'
+
 alias tidal='cd; cd code/tidal'
 alias gitAbortMerge='git merge --abort'
 alias gitShowAssumeUnchanged="git ls-files -v | grep '^[a-z]' | cut -c3-"
 alias gitdUntrackAllUnTrackedFiles="git ls-files -v | grep '^[a-z]' | cut -c 3- | tr '\012' '\000' | xargs -0 git update-index --no-assume-unchanged"
 alias gitRefreshPrune="git remote prune origin"
 
-alias mvnSetVersion='mvn org.codehaus.mojo:versions-maven-plugin:2.7:set -DprocessAllModules=true -DgenerateBackupPoms=false'
-alias mvnSetVersionNotAll='mvn org.codehaus.mojo:versions-maven-plugin:2.7:set -DgenerateBackupPoms=false'
-alias mvnUpdateTidalVersions='mvn org.codehaus.mojo:versions-maven-plugin:2.7:update-properties -Dincludes=com.tidal\*:\*,com.wimp\*:\* -DallowSnapshots=true -DgenerateBackupPoms=false;mvn org.codehaus.mojo:versions-maven-plugin:2.7:use-latest-versions -Dincludes=com.tidal\*:\*,com.wimp\*:\* -DallowSnapshots=true -DgenerateBackupPoms=false'
-alias mvnUpdateAllVersions='mvn org.codehaus.mojo:versions-maven-plugin:2.7:update-properties -DgenerateBackupPoms=false; mvn org.codehaus.mojo:versions-maven-plugin:2.7:use-latest-versions -DgenerateBackupPoms=false'
-alias mvnUpdateCboOnlyVersions='mvn org.codehaus.mojo:versions-maven-plugin:2.7:update-properties -DgenerateBackupPoms=false -DprocessParent=true -DexcludeReactor=false -Dincludes=com.cbo\*:\*; mvn org.codehaus.mojo:versions-maven-plugin:2.7:use-latest-versions -DgenerateBackupPoms=false -DprocessParent=true -DexcludeReactor=false -Dincludes=com.cbo\*:\*'
-alias mvnList="mvn fr.jcgay.maven.plugins:buildplan-maven-plugin:list"
+
 
 # alias changeUsrLocal='sudo chown -R $(whoami):admin /usr/local'
 alias switchToPython2='unlink /usr/local/bin/python; ln -s /usr/local/Cellar/python@2/2.7.15_1/bin/python /usr/local/bin/python;'
@@ -61,8 +55,22 @@ alias awsTidalStage="aws --profile stage "
 alias awsTidalProd="aws --profile prod "
 alias awsTidalSshStage="aws --profile stage ssm start-session --target "
 alias awsTidalSshProd="aws --profile prod ssm start-session --target "
+stagessh() {
+   ssh -i ~/.ssh/stage.pem ubuntu@$@
+}
+
+prodssh() {
+   ssh -i ~/.ssh/tidal-us-east-1-2.pem ubuntu@$@
+}
+
+dockerLog() {
+   docker logs -f $@
+}
 
 alias awsAssumeRole="~/.aws/assume-role"
+
+
+
 
 alias beyondCompareReset="rm Library/Application\ Support/Beyond\ Compare/registry.dat;"
 
@@ -132,28 +140,11 @@ function makebuildrepo() {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+source ~/tidal-dotfiles/main.sh
 
 source ~/.pythonsetup
 source ~/.javasetup
+source ~/.mavensetup
 source ~/.npmsetup
 source ~/.dockersetup
 
@@ -161,7 +152,8 @@ source ~/.dockersetup
 
 
 
-
+bindkey '^ ' autosuggest-execute
+bindkey '^x' autosuggest-clear
 
 
 
