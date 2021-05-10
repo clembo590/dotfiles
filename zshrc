@@ -1,4 +1,5 @@
 ZSH=$HOME/.oh-my-zsh
+ZSH_DISABLE_COMPFIX=true
 
 # You can change the theme with another one:
 #   https://github.com/robbyrussell/oh-my-zsh/wiki/themes
@@ -45,10 +46,6 @@ alias gitRefreshPrune="git remote prune origin"
 
 
 
-# alias changeUsrLocal='sudo chown -R $(whoami):admin /usr/local'
-alias switchToPython2='unlink /usr/local/bin/python; ln -s /usr/local/Cellar/python@2/2.7.15_1/bin/python /usr/local/bin/python;'
-alias switchToPython3='unlink /usr/local/bin/python; ln -s /usr/local/Cellar/python/3.6.4_3/bin/python /usr/local/bin/python;'
-
 alias awsTidalLogin="saml2aws login --session-duration=43200"
 alias awsTidalLogin2="aws-google-auth -u clement.boret@tidal.com -S 1042655796932 -I C00itggk3 -R us-east-1 -d 43200 -p default"
 alias awsTidalStage="aws --profile stage "
@@ -74,79 +71,14 @@ alias awsAssumeRole="~/.aws/assume-role"
 
 alias beyondCompareReset="rm Library/Application\ Support/Beyond\ Compare/registry.dat;"
 
-function makebuildrepo() {
-    REPO_NAME=bac/${PWD##*/};
-    echo 'building with repoName='$REPO_NAME;
-    make build REPO_NAME=$REPO_NAME;
-}
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-source ~/tidal-dotfiles/main.sh
-
-source ~/.pythonsetup
-source ~/.javasetup
-source ~/.mavensetup
-source ~/.npmsetup
-source ~/.dockersetup
+source ~/.tidal-dotfiles/main.sh
+source ~/.dotfiles/javasetup
+source ~/.dotfiles/mavensetup
+source ~/.dotfiles/npmsetup
+source ~/.dotfiles/dockersetup
 
 
 
@@ -156,17 +88,3 @@ bindkey '^ ' autosuggest-execute
 bindkey '^x' autosuggest-clear
 
 
-
-
-
-
-
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-
-# The next line updates PATH for the Google Cloud SDK.
-if [ -f '/Users/clement/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/clement/google-cloud-sdk/path.zsh.inc'; fi
-
-# The next line enables shell command completion for gcloud.
-if [ -f '/Users/clement/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/clement/google-cloud-sdk/completion.zsh.inc'; fi

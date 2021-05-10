@@ -1,2 +1,9 @@
 /.project
 /.DS_Store
+.idea
+**/.DS_Store
+.settings
+.project
+.classpath
+*.iml
+.vscode
