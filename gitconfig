@@ -16,7 +16,7 @@
 [core]
   pager = less -FRSX
 	editor = '/Applications/Sublime Text.app/Contents/SharedSupport/bin/subl' -n -w
-	excludesfile = /Users/clement/.gitignore
+	excludesfile = /Users/cboret/.gitignore
 
 [alias]
   co = checkout
@@ -55,12 +55,13 @@
 	email = clement.boret@tidal.com
 	name = clement-boret
 
-[includeIf "gitdir:~/code/tidal/github/"]
-    path = ~/code/tidal/github/tidal.gitconfig
-    
+[includeIf "gitdir:~/code/tutorials/"]
+    path = ~/.dotfiles/gitoverride
+
 [difftool "sourcetree"]
 	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
-	path = 
+	path =
 [mergetool "sourcetree"]
 	cmd = /Applications/Sourcetree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
 	trustExitCode = true
+
