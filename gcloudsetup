@@ -1,0 +1,2 @@
+# in order to perform first login: docker run -ti -v$HOME/.config/gcloud:/root/.config/gcloud gcr.io/google.com/cloudsdktool/cloud-sdk
+alias gcloud="docker run --rm -ti -v $HOME/.config/gcloud:/root/.config/gcloud gcr.io/google.com/cloudsdktool/cloud-sdk gcloud"

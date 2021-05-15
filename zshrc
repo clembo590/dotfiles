@@ -79,6 +79,7 @@ source ~/.dotfiles/javasetup
 source ~/.dotfiles/mavensetup
 source ~/.dotfiles/npmsetup
 source ~/.dotfiles/dockersetup
+source ~/.dotfiles/gcloudsetup
 
 
 
